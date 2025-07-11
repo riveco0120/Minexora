@@ -27,7 +27,7 @@ $(document).ready(function () {
     $('#btn-Acerca-de').on('click', function (e) {
         e.preventDefault();
         $('html, body').animate({
-            scrollTop: acercaDe
+            scrollTop: acercaDe -300
         }, 500);
     });
     $('#btn-Servicios').on('click', function (e) {
