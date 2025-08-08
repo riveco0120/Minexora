@@ -1,0 +1,493 @@
+* {
+    margin: 0px;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    overflow-x: hidden;
+    background: url(../img/bg-textura.png);
+    background-repeat: repeat;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/*------------------------HEADER --------*/
+header {
+    width: 100%;
+    background: url('../img/background.png') no-repeat #008500;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center 0;
+}
+
+header .contenedor {
+    position: relative;
+    height: 700px;
+}
+
+header .menu {
+    width: 100%;
+    text-align: right;
+}
+
+header .menu a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 40px 20px;
+    margin-top: 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+header .menu a:hover {
+    text-decoration: underline;
+}
+
+header .menu .perfil-link {
+  display: inline-flex;      
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background-color: transparent;
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  max-width: 180px;                 
+  white-space: nowrap;             
+  overflow: hidden;                
+  text-overflow: ellipsis;  
+}
+
+header .menu .perfil-link .avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+header .texto {
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    margin-top: -52;
+}
+
+header .texto .nombre {
+    font-size: 45px;
+    font-weight: 600;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+header .texto .nombre span {
+    font-weight: 300;
+}
+
+header .texto h3 {
+    font-weight: 300;
+    font-size: 25px;
+    font-style: italic;
+    width: 60%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.editFunction {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  z-index: 999;
+  background-color: #005bac;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  margin-right: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.editFunction:hover {
+  background-color: #004080;
+}
+
+#btnGuardarContenido {
+  left: 110px; 
+}
+
+/*---------- MAIN--------------------*/
+
+.main {
+    background: url(../img/bg-textura.png);
+    background-repeat: repeat;
+    width: 100%;
+}
+
+.main .acerca-de .contenedor {
+    overflow: visible;
+    position: relative;
+}
+
+.main .acerca-de .foto {
+    width: 80%;
+    position: absolute;
+    left: 0;
+    top: -50px;
+    z-index: 0;
+    margin-left: 10%;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, .35);
+}
+
+.main .acerca-de .foto img {
+    vertical-align: top;
+    width: 100%;
+}
+
+.main .acerca-de article {
+    background: #fff;
+    padding: 40px;
+    width: 48%;
+    position: relative;
+    top: 150px;
+    z-index: 1;
+    float: right;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, .35);
+}
+
+.main .acerca-de article h3 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.main .acerca-de article p {
+    line-height: 28px;
+    margin-bottom: 15px;
+}
+
+.main .servicios {
+    padding-top: 460px;
+    margin-bottom: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.main .servicios .titulo {
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main .servicios .contenedor-menu,
+.main .servicios .contenedor-menu2 {
+    border: 1px solid #000;
+    background: transparent;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.main .servicios article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.productosOfrecidos {
+    flex: 1 1 300px;
+    max-width: 45%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    max-width: 100%;
+}
+
+.productosOfrecidos:hover {
+    transform: translateY(-5px);
+}
+
+.productosOfrecidos img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.productosOfrecidos .nombre {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.productosOfrecidos .Descripcion {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.productosOfrecidos .Precio {
+    font-size: 18px;
+    color: #008500;
+    font-weight: bold;
+}
+
+.todosProductos {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.todosProductos a {
+    background-color: #008500;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.todosProductos a:hover {
+    background-color: #005f00;
+}
+
+.main .servicios .categorias {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.main .servicios .productosOfrecidos {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.main .galeria {
+    overflow: hidden;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.main .galeria .foto {
+    width: 25%;
+    float: left;
+}
+
+.main .galeria .foto img {
+    width: 100%;
+    vertical-align: top;
+    opacity: .7;
+}
+
+.main .galeria .foto img:hover {
+    opacity: 1;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.main .ubicacion {
+    background: #fff;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.main .ubicacion .titulo {
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.main .ubicacion .direccion {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.main .ubicacion .horarios {
+    float: right;
+    width: 50%;
+    text-align: right;
+    overflow: hidden;
+}
+
+.main .ubicacion .direccion .calle {
+    margin-bottom: 15px;
+}
+
+.main .ubicacion .horarios h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main .ubicacion .horarios .entre-semana,
+.main .ubicacion .horarios .fin-semana {
+    text-align: center;
+    float: left;
+    width: 50%;
+}
+
+.main .mapa {
+    width: 100%;
+    overflow: hidden;
+}
+
+.main .mapa iframe {
+    width: 100%;
+    max-height: 600px;
+}
+
+/*------- FOOTER ----- */
+footer {
+    background: #e6e5e59d;
+}
+
+footer .copyright {
+    text-align: center;
+    padding: 15px 0;
+}
+
+@media screen and (max-width:800px) {
+    header .contenedor {
+        position: static;
+        height: auto;
+    }
+
+    header .texto {
+        position: static;
+        margin: 100px 0;
+    }
+
+    header .menu {
+        text-align: center;
+    }
+
+    header .menu a {
+        margin: 5px 5px;
+    }
+
+    header .texto .nombre {
+        font-size: 30px;
+    }
+
+    header .texto h3 {
+        font-size: 18px;
+    }
+
+    .main .acerca-de .foto {
+        width: 100%;
+        margin-left: 0%;
+        margin-bottom: 0%;
+        position: relative;
+    }
+
+    .main .acerca-de article {
+        position: relative;
+        width: 100%;
+        top: -50px;
+        transform: translate(0px, 0)
+    }
+
+    .main .servicios {
+        padding-top: 300px;
+    }
+
+    .main .servicios article {
+        width: 100%;
+    }
+
+    .main .servicios .productosOfrecidos img {
+        width: 50%;
+        max-width: 150px;
+        border-radius: 0;
+        margin-bottom: 0;
+        border-radius: 5px;
+    }
+
+    .main .galeria .foto {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    .main .ubicacion {
+     padding-left: 5px;
+    padding-right: 5px;
+}
+
+    .main .mapa {
+        width: 80%;
+        margin: auto;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+   .main .acerca-de article h3 {
+    font-size: 34px;
+    margin-bottom: 10px;
+   }
+
+   .main .servicios article .nombre,
+   .main .servicios article .Descripcion,
+   .main .servicios article .Precio{
+    font-size: 14px;
+    line-height: 16px;
+   }
+
+   .main .ubicacion .direccion{
+    margin-bottom: 15px;
+   }
+
+   .main .ubicacion .direccion,
+    .main .ubicacion .horarios{
+    width: 100%;
+    text-align: center;
+   }
+}

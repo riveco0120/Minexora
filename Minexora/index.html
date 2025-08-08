@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	<title>Minexora</title>
+	<link rel="stylesheet" href="css/estyle.css">
+</head>
+
+<body>
+	<header>
+		<div class="contenedor">
+			<nav class="menu">
+				<a href="#" id="btn-Acerca">Acerca de</a>
+				<a href="login.html" id="btn-Login">Login</a>
+				<a href="vistaUsuari.html" id="btn-vistaUser">Perfil</a>
+				<a href="#" id="btn-Servicios">Servicios</a>
+				<a href="#" id="btn-Galeria">Galeria</a>
+				<a href="#" id="btn-Ubicacion">Ubicacion</a>
+				<a href="creationUser.html" id="adminCreateUser" style="display: none;">Crear usuario</a>
+				<a href="#" id="logoutBtn">Cerrar sesión</a>
+				<a href="#" id="perfilLink" class="perfil-link">
+					<span id="nombreUsuario"></span>
+					<img id="userProfileImage" src="./img/user-default.png" alt="Usuario" class="profile-image" />			</nav>
+ </a>
+			</nav>
+			<div class="texto">
+				<h1 class="nombre">Minexora <Span>Asesorías mineras</Span></h1>
+				<h3 id="descripcionPrincipal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dolor animi
+					earum. Obcaecati vel
+					placeat distinctio eveniet atque sed.</h3>
+			</div>
+		</div>
+	</header>
+
+	<section class="main">
+		<section class="acerca-de" id="acerca-de">
+			<div class="contenedor">
+				<div class="foto">
+					<img src="img/acerca-de.png" alt="">
+				</div>
+				<article>
+					<h3>Acerca de</h3>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore corrupti hic magnam aliquid.</p>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore corrupti hic magnam aliquid.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="servicios" id="servicios">
+			<div class="contenedor">
+				<h3 class="titulo" id="productos">Nuestros Productos</h3>
+			</div>
+			<div class="contenedor-menu">
+				<div class="contenedor-menu2">
+					<p class="categorias">Productos ofrecidos</p>
+					<article>
+						<div class="productosOfrecidos">
+							<img src="img/menu/mineria-1.png" alt="">
+							<p class="nombre">Ensayo al fuego</p>
+							<p class="Descripcion">El ensayo al fuego es un método clásico y preciso utilizado para
+								determinar la cantidad de metales preciosos.</p>
+							<p class="Precio">Precio: 180000</p>
+						</div>
+						<div class="productosOfrecidos">
+							<img src="img/menu/mineria-2.png" alt="">
+							<p class="nombre">Accesorios</p>
+							<p class="Descripcion">Pregunte por nuestros productos.</p>
+							<p class="Precio">Precio: 180000</p>
+						</div>
+					</article>
+					<article>
+						<div class="productosOfrecidos">
+							<img src="img/menu/mineria-3.png" alt="">
+							<p class="nombre">Tenor de mina</p>
+							<p class="Descripcion">Preciso utilizado para determinar la cantidad de metales preciosos
+								—como oro, plata y platino— en una muestra.</p>
+							<p class="Precio">Precio: 180000</p>
+						</div>
+						<div class="productosOfrecidos">
+							<img src="img/menu/mineria-4.png" alt="">
+							<p class="nombre">Asesorías</p>
+							<p class="Descripcion">Asesorías personalizadas.</p>
+							<p class="Precio">Precio: 180000</p>
+						</div>
+					</article>
+					<div class="todosProductos">
+						<a href="memberships.html">Ver todos los productos</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="galeria" id="galeriaId">
+			<div class="foto"><img src="img/galeria/galeria-1.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-2.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-3.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-4.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-5.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-6.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-7.png" alt=""></div>
+			<div class="foto"><img src="img/galeria/galeria-8.png" alt=""></div>
+		</section>
+
+		<section class="ubicacion" id="ubicacionId">
+			<div class="contenedor">
+				<h3 class="titulo">Ubicación</h3>
+				<div class="direccion">
+					<p class="calle">Calle falsa 123 <br>Medellin, Colombia 05001</p>
+					<p class="telefono">+57 34585456</p>
+					<p class="correo">estoMinerosPrueba@mineros.og</p>
+				</div>
+				<div class="horarios">
+					<h4>Horarios</h4>
+					<p class="entre-semana">Lunes a Viernes <br>8:00am - 5:00pm</p>
+					<p class="fin-semana">Sábados<br>8:00am - 12:00pm</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="mapa">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!2d1983.0111778370049!2d-75.57241665888782!3d6.2607853579500725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428e310f48b3f%3A0xb66633b0532da890!2zVXJiYW5pemFjacOzbiBUdXLDrW4!5e0!3m2!1ses!2sco!4v1752186727312!5m2!1ses!2sco"
+				width="1600" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</section>
+	</section>
+
+	<footer>
+		<div class="contenedor">
+			<div class="copyright">
+				<p>Copyright Minexora @ 2025</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script src="js/efectos.js"></script>
+	<script src="js/util.js"></script>
+</body>
+
+</html>

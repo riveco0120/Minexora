@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Usuario - Minexora</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+     <div class="usuario-saludo">
+    <h1>Bienvenido, <span id="nombreUsuario">Usuario</span></h1>
+  </div>
+  <div class="acciones-usuario">
+    <a href="index.html" class="inicio">Inicio</a>
+    <button id="logoutBtn">Cerrar Sesión</button>
+  </div>  </header>
+
+  <main>
+    <section class="card" id="calendario">
+      <h2>Calendario</h2>
+      <div id="calendarBox">(Calendario en desarrollo)</div>
+    </section>
+
+    <section class="card" id="reuniones">
+      <h2>Generar Reunión</h2>
+      <form id="formReunion">
+        <input type="text" id="tituloReunion" placeholder="Título de la reunión" required>
+        <input type="date" id="fechaReunion" required>
+        <input type="time" id="horaReunion" required>
+        <button type="submit">Programar</button>
+      </form>
+      <ul id="listaReuniones"></ul>
+    </section>
+
+    <section class="card" id="misDatos">
+      <h2>Mis Datos</h2>
+      <p><strong>Nombre:</strong> <span id="datoNombre"></span></p>
+      <p><strong>Email:</strong> <span id="datoMail"></span></p>
+      <p><strong>Rol:</strong> <span id="datoRol"></span></p>
+    </section>
+
+    <section class="card" id="archivos">
+      <h2>Mis Archivos</h2>
+      <ul>
+        <li>documento_mineria.pdf</li>
+        <li>presentacion_proyecto.pptx</li>
+        <li>certificado_ensayo.xlsx</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="chat-container" id="chatContainer">
+    <div class="chat-header" onclick="toggleChat()">💬 Chat con Asistente</div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input type="text" id="chatMessage" placeholder="Escribe un mensaje...">
+      <button onclick="sendChatMessage()">Enviar</button>
+    </div>
+  </div>
+
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

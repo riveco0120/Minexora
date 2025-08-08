@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-bar {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-top {
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  margin-left: 1%;
+}
+
+.left-section {
+  flex: 1;
+  background: url('../img/login1.png') no-repeat center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #e5e5e5;
+  height: 95%;
+  max-width: 1200px;
+  margin: 1%;
+  margin-right: 10px; /* ✅ NUEVO: margen derecho adicional */
+  border-radius: 10px;
+}
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #ffffff;
+}
+
+.login-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.btn-registrar {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #f3f3f3;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-registrar:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input:invalid {
+  border-color: red;
+}
+
+.form-group input:valid {
+  border-color: #4caf50;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.botones button {
+  padding: 12px 25px;
+  background-color: #008500;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botones button:hover {
+  background-color: #005f00;
+}
+
+.footer-bar {
+  background: #e6e5e59d;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+/* Recuperar contraseña */
+.recuperar {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.recuperar a {
+  color: #006400;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.recuperar a:hover {
+  text-decoration: underline;
+}
+
+/* Mensaje después de recuperar */
+#mensajeRecuperacion {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.volver-inicio {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.volver-inicio a {
+  display: inline-block;
+  background-color: #f3f3f3;
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.volver-inicio a:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+/* 📱 Responsive para celulares y tablets */
+@media screen and (max-width: 1024px) {
+ .main-content {
+    flex-direction: column;
+    margin: 2%; /* ✅ Margen completo: arriba, abajo, izq, der */
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+    margin: 0; /* ✅ Ya no es necesario margen adicional aquí */
+    height: auto;
+  }
+
+  .left-section {
+    height: 35vh;
+  }
+
+  .right-section {
+    padding: 1rem;
+  }
+}

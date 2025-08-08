@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Contacto | Minexora</title>
+  <link rel="stylesheet" href="css/estyleCrearion.css" />
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header class="header-bar">
+      <div class="logo-container">
+        <img class="logo-top" src="img/logoeditado.png" alt="MINEXORA" />
+      </div>
+      <div class="volver-inicio">
+        <a href="index.html">Inicio</a>
+        <a href="login.html">Login</a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="left-section"></div>
+
+      <div class="right-section">
+        <div class="login-box">
+          <h2>Registrar Contacto</h2>
+
+          <form id="formRegistro">
+            <div class="form-group">
+              <label for="name" class="required">Nombre</label>
+              <input type="text" id="name" placeholder="Ej: Juan" required />
+            </div>
+
+            <div class="form-group">
+              <label for="lastName" class="required">Apellido</label>
+              <input type="text" id="lastName" placeholder="Ej: Pérez" required />
+            </div>
+
+            <div class="form-group">
+              <label for="documentType" class="required">Tipo de documento</label>
+              <select id="documentType" required>
+                <option value="">-- Seleccione --</option>
+              </select>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="documentNumber" class="required">Número de documento</label>
+              <input type="text" id="documentNumber" placeholder="Ej: 123456789" required />
+            </div>
+
+            <div class="form-group">
+              <label for="mail" class="required">Correo electrónico</label>
+              <input type="email" id="mail" placeholder="correo@ejemplo.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="username" class="required">Nombre de usuario</label>
+              <input type="text" id="username" placeholder="Ej: juan123" required />
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="required">Contraseña</label>
+              <input type="password" id="password" placeholder="******" required />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword" class="required">Confirmar contraseña</label>
+              <input type="password" id="confirmPassword" placeholder="******" required />
+            </div>
+
+
+            <div class="form-group" id="rolContainer">
+              <label for="rol" class="required">Rol</label>
+              <input type="text" id="rol" placeholder="Ej: Administrador" required />
+            </div>
+
+            <div class="form-group">
+              <label for="telephone" class="required">Teléfono</label>
+              <input type="tel" id="telephone" placeholder="Ej: 3001234567" required />
+            </div>
+            <div class="botones">
+              <button type="submit" id="guardarContacto">Guardar Contacto</button>
+            </div>
+            <div class="form-group" id="codigoConfirmacionContainer" style="display: none;">
+              <label for="codigoConfirmacion">Ingresa el código que te enviamos al correo</label>
+              <input type="text" id="codigoConfirmacion" placeholder="Código de verificación" />
+              <button type="button" id="btnConfirmarCodigo">Confirmar</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer-bar">
+      <p>Copyright Minexora @ 2025</p>
+    </footer>
+
+  </div>
+
+  <script src="js/servicios.js"></script>
+
+</body>
+
+</html>
