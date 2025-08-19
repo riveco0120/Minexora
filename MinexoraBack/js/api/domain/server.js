@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
 
-const OpenAI = require('openai');
+const chatRoutes = require('./routes/chat.routes');
 
 // === Importar controladores ===
 const {
@@ -27,6 +27,9 @@ const PORT = 30000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//==Chat === 
+app.use('/api/chat', chatRoutes);
+
 // === Archivos estáticos del frontend (Minexora) ===
 const frontendPath = path.join(__dirname, '..', '..', '..', '..', 'Minexora');
 app.use(express.static(frontendPath));
@@ -45,27 +48,6 @@ app.post('/api/actualizar-password', actualizarPasswordController);
 // === Rutas para validación de contacto (tabla contact_temp) ===
 app.post('/api/enviar-token-contacto', enviarTokenContactoController);
 app.post('/api/validarContacto', validarContactoController);
-
-// === Chat con OpenAI ===
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-console.log('🔐 Clave API cargada:', process.env.OPENAI_API_KEY ? "Cargada correctamente" : "No encontrada");
-
-app.post('/api/chat', async (req, res) => {
-  const { message } = req.body;
-
-  try {
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: message }],
-    });
-
-    const respuesta = completion.choices[0].message.content;
-    res.json({ reply: respuesta });
-  } catch (error) {
-    console.error('❌ Error en OpenAI:', error);
-    res.status(500).json({ error: 'Error al conectar con el asistente.' });
-  }
-});
 
 // === Rutas HTML principales ===
 app.get('/', (req, res) => res.sendFile(path.join(frontendPath, 'index.html')));

@@ -7,59 +7,270 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
-     <div class="usuario-saludo">
-    <h1>Bienvenido, <span id="nombreUsuario">Usuario</span></h1>
-  </div>
-  <div class="acciones-usuario">
-    <a href="index.html" class="inicio">Inicio</a>
-    <button id="logoutBtn">Cerrar Sesión</button>
-  </div>  </header>
+    <img src="./img/logoeditado.png" alt="Logo Minexora" class="logo-top">
+    <div class="acciones-usuario">
+      <a href="index.html" class="inicio">Inicio</a>
+      <button id="logoutBtn">Cerrar Sesión</button>
+      <div class="usuario-perfil">
+        <span id="nombreUsuario">Usuario</span>
+        <img src="./img/FotoPerfil.jpg" alt="Foto de perfil" class="avatar" />
+      </div>
+    </div>
+  </header>
 
-  <main>
-    <section class="card" id="calendario">
-      <h2>Calendario</h2>
-      <div id="calendarBox">(Calendario en desarrollo)</div>
+  <main class="solicitud-container">
+    <!-- Sección Solicitar Ensayo -->
+    <section class="card solicitud-form">
+      <h1>Solicitar Ensayo</h1>
+
+      <label for="tipoEnsayo">Seleccione el tipo de ensayo</label>
+      <select id="tipoEnsayo" name="tipoEnsayo">
+        <option value="">-- Seleccione --</option>
+        <option value="fuego">Ensayo al fuego</option>
+        <option value="drx">Análisis DRX</option>
+        <option value="otro">Otro ensayo</option>
+      </select>
+
+      <label for="cantidadEnsayo">Cantidad de ensayos</label>
+      <input type="number" id="cantidadEnsayo" min="1" placeholder="Ingrese cantidad">
+
+      <label for="opcionEnvio">Método de entrega</label>
+      <select id="opcionEnvio" name="metodoEntrega">
+        <option value="">-- Seleccione --</option>
+        <option value="enviar">Enviar muestra</option>
+        <option value="recoger">Recoger muestra</option>
+      </select>
+
+      <div class="recoleccion-opciones" id="datosRecoleccion">
+        <label for="lugarRecoleccion">Lugar de recolección</label>
+        <input type="text" id="lugarRecoleccion" placeholder="Dirección completa">
+
+        <label for="fechaRecoleccion">Fecha de recolección</label>
+        <input type="date" id="fechaRecoleccion">
+
+        <label for="horaRecoleccion">Hora de recolección</label>
+        <input type="time" id="horaRecoleccion">
+      </div>
+
+      <div class="valor-solicitud">
+        <p><strong>Valor estimado:</strong> $<span id="valorEnsayo">0</span> COP</p>
+      </div>
+
+      <button type="button" class="btn-solicitar">Solicitar</button>
     </section>
 
-    <section class="card" id="reuniones">
-      <h2>Generar Reunión</h2>
-      <form id="formReunion">
-        <input type="text" id="tituloReunion" placeholder="Título de la reunión" required>
-        <input type="date" id="fechaReunion" required>
-        <input type="time" id="horaReunion" required>
-        <button type="submit">Programar</button>
-      </form>
-      <ul id="listaReuniones"></ul>
-    </section>
-
-    <section class="card" id="misDatos">
-      <h2>Mis Datos</h2>
-      <p><strong>Nombre:</strong> <span id="datoNombre"></span></p>
-      <p><strong>Email:</strong> <span id="datoMail"></span></p>
-      <p><strong>Rol:</strong> <span id="datoRol"></span></p>
-    </section>
-
-    <section class="card" id="archivos">
-      <h2>Mis Archivos</h2>
-      <ul>
-        <li>documento_mineria.pdf</li>
-        <li>presentacion_proyecto.pptx</li>
-        <li>certificado_ensayo.xlsx</li>
-      </ul>
+    <!-- Sección Sugerencias -->
+    <section class="card sugerencias">
+      <h2>Sugerencias</h2>
+      <div class="sugerencias-grid">
+        <div class="sugerencia-item">
+          <img src="./img/perfil/geologia.png" alt="Geología">
+          <p>Geología</p>
+        </div>
+        <div class="sugerencia-item">
+          <img src="./img/perfil/Metalurgia.png" alt="Metalurgia">
+          <p>Metalurgia</p>
+        </div>
+        <div class="sugerencia-item">
+          <img src="./img/perfil/Quimica.png" alt="Química">
+          <p>Química</p>
+        </div>
+        <div class="sugerencia-item">
+          <img src="./img/perfil/Mineria  (1).png" alt="Minería Sostenible">
+          <p>Minería Sostenible</p>
+        </div>
+        <div class="sugerencia-item">
+          <img src="./img/perfil/Segurida.png" alt="Seguridad Minera">
+          <p>Seguridad Minera</p>
+        </div>
+      </div>
     </section>
   </main>
+  
+  <!-- ======= Solicitar Asesoría ======= -->
+  <section class="solicitud-asesoria">
+    <!-- Columna izquierda -->
+    <div class="asesoria-left">
+      <h1>Solicitar Asesoría</h1>
+      <p>Elige la fecha y la hora para tu asesoría</p>
 
+      <label for="fechaAsesoria">Fecha</label>
+      <input type="date" id="fechaAsesoria" name="fechaAsesoria" class="asesoria-field">
+
+      <label for="horaAsesoria">Hora</label>
+      <input type="time" id="horaAsesoria" name="horaAsesoria" class="asesoria-field">
+
+      <button type="button" id="btnBuscarAsesores" class="asesoria-cta">
+        Buscar Asesores Disponibles
+      </button>
+
+      <div id="listaAsesores" class="asesores-disponibles" style="display:none;">
+        <h3>Asesores Disponibles:</h3>
+        <ul>
+          <li>Germana</li>
+          <li>Jeferson</li>
+          <li>Leonardo</li>
+          <li>Luis</li>
+          <li>Alexs</li>
+          <li>Richard</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="asesoria-right">
+      <h3>Ventajas</h3>
+      <div class="ventaja-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>Elige la hora exacta con hasta 90 días de anticipación.</span>
+      </div>
+      <div class="ventaja-item">
+        <i class="fas fa-clock"></i>
+        <span>Tiempo de espera adicional incluido para cumplir con tu asesoría.</span>
+      </div>
+      <div class="ventaja-item">
+        <i class="fas fa-ban"></i>
+        <span>Cancela sin cargo con hasta 60 minutos de anticipación.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Actividad: Asesorías / Ensayos ======= -->
+<section class="actividad">
+  <h2>Tu cuenta y actividad</h2>
+
+  <div class="actividad-grid">
+    <!-- Más reciente -->
+    <div class="actividad-reciente card-actividad">
+      <h3>Más reciente</h3>
+
+      <div class="reciente-body">
+        <!-- Mapa/preview -->
+        <div class="reciente-media">
+          <img src="./img/perfil/Actividad.png" alt="Vista previa asesoría o ensayo" />
+        </div>
+
+        <div class="reciente-info">
+          <div class="reciente-titulo">
+            <span class="chip chip-tipo">Asesoría</span>
+            <h4 class="actividad-nombre">Asesoría Virtual – Geología</h4>
+          </div>
+
+          <div class="reciente-detalles">
+            <span class="detalle-fecha">16 ago · 11:16</span>
+            <span class="detalle-costo">85.000 COP</span>
+          </div>
+
+          <button class="btn-ver">Ver detalles</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anteriores -->
+    <div class="actividad-anteriores card-actividad">
+      <h3>Anteriores</h3>
+
+      <ul class="anteriores-lista">
+        <!-- Ítem 1 -->
+        <li class="anterior-item">
+          <div class="anterior-info">
+            <div class="anterior-linea1">
+              <span class="anterior-titulo">Asesoría – Metalurgia</span>
+              <span class="anterior-costo">72.000 COP</span>
+            </div>
+            <div class="anterior-linea2">
+              <span class="anterior-fecha">15 ago · 16:24</span>
+              <span class="chip chip-estado estado-completado">Completado</span>
+            </div>
+          </div>
+          <button class="btn-link">Ver detalles</button>
+        </li>
+
+        <!-- Ítem 2 -->
+        <li class="anterior-item">
+          <div class="anterior-info">
+            <div class="anterior-linea1">
+              <span class="anterior-titulo">Ensayo al Fuego</span>
+              <span class="anterior-costo">120.000 COP</span>
+            </div>
+            <div class="anterior-linea2">
+              <span class="anterior-fecha">9 ago · 11:13</span>
+              <span class="chip chip-estado estado-cancelado">Cancelado</span>
+            </div>
+          </div>
+          <button class="btn-link">Ver detalles</button>
+        </li>
+
+        <!-- Ítem 3 -->
+        <li class="anterior-item">
+          <div class="anterior-info">
+            <div class="anterior-linea1">
+              <span class="anterior-titulo">Asesoría – Química</span>
+              <span class="anterior-costo">57.000 COP</span>
+            </div>
+            <div class="anterior-linea2">
+              <span class="anterior-fecha">4 ago · 17:33</span>
+              <span class="chip chip-estado estado-completado">Completado</span>
+            </div>
+          </div>
+          <button class="btn-link">Ver detalles</button>
+        </li>
+
+        <!-- Ítem 4 -->
+        <li class="anterior-item">
+          <div class="anterior-info">
+            <div class="anterior-linea1">
+              <span class="anterior-titulo">Ensayo DRX</span>
+              <span class="anterior-costo">—</span>
+            </div>
+            <div class="anterior-linea2">
+              <span class="anterior-fecha">4 ago · 17:11</span>
+              <span class="chip chip-estado estado-cancelado">Cancelado</span>
+            </div>
+          </div>
+          <button class="btn-link">Ver detalles</button>
+        </li>
+      </ul>
+
+      <button class="btn-full">Ver todos</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Chat flotante -->
   <div class="chat-container" id="chatContainer">
-    <div class="chat-header" onclick="toggleChat()">💬 Chat con Asistente</div>
+    <div class="chat-header">💬 Chat con Asistente</div>
     <div class="chat-body" id="chatBody"></div>
     <div class="chat-input">
       <input type="text" id="chatMessage" placeholder="Escribe un mensaje...">
-      <button onclick="sendChatMessage()">Enviar</button>
+      <button>Enviar</button>
     </div>
   </div>
 
+  <div class="social-links">
+  <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+<!-- 🔹 Asegúrate de cargar Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 
   <script src="js/dashboard.js"></script>
 </body>

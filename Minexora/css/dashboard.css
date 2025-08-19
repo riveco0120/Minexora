@@ -1,3 +1,16 @@
+/* ============================= */
+/* Paleta base y Reset           */
+/* ============================= */
+:root {
+  --plateado: #dfdfdf;
+  --plateado-oscuro: #A9A9A9;
+  --dorado: #FFD700;
+  --verde: #008500;      /* verde naturaleza */
+  --verde-oscuro: #006400;
+  --texto-oscuro: #1f2a37;
+  --blanco: #ffffff;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   background: #f4f4f4;
@@ -5,17 +18,70 @@ body {
   padding: 0;
 }
 
+/* ============================= */
+/* Header                        */
+/* ============================= */
 header {
-  background: #2c3e50;
-  color: white;
+  background-color: var(--plateado);
+  color: var(--texto-oscuro);
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+.perfil-header {
+  background: linear-gradient(90deg, var(--plateado), var(--dorado));
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.usuario-perfil {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--verde-oscuro);
+}
+
+.usuario-perfil .avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--dorado);
+  background-color: var(--plateado);
+}
+
+.logo-top {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.volver-inicio a,
+.acciones-usuario .inicio {
+  color: var(--verde-oscuro);
+  background-color: transparent;
+  border: 2px solid var(--verde-oscuro);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.volver-inicio a:hover,
+.acciones-usuario .inicio:hover {
+  background-color: var(--verde-oscuro);
+  color: var(--blanco);
+}
+
 .dashboard-header {
-  background-color: #008500;
-  color: white;
+  background-color: var(--verde);
+  color: var(--blanco);
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
@@ -27,6 +93,7 @@ header {
 .usuario-saludo h1 {
   font-size: 24px;
   margin: 0;
+  color: inherit;
 }
 
 .acciones-usuario {
@@ -35,37 +102,24 @@ header {
   align-items: center;
 }
 
-.acciones-usuario .inicio {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.acciones-usuario .inicio:hover {
-  background-color: white;
-  color: #008500;
-}
-
 .acciones-usuario #logoutBtn {
-  background-color: white;
-  color: #008500;
+  background-color: var(--dorado);
+  color: var(--texto-oscuro);
   border: none;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: filter 0.25s ease, background-color 0.25s ease;
 }
 
 .acciones-usuario #logoutBtn:hover {
-  background-color: #f0f0f0;
+  filter: brightness(0.95);
 }
 
+/* ============================= */
+/* Layout principal y tarjetas   */
+/* ============================= */
 main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -74,20 +128,22 @@ main {
 }
 
 .card {
-  background: white;
+  background: #ffffff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  border-top: 4px solid var(--verde);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: none; /* Sin efecto hover */
 }
 
-button, .inicio {
+/* Botones generales */
+button,
+.inicio {
   background: #3498db;
-  color: white;
+  color: #ffffff;
   padding: 10px 15px;
   border: none;
   border-radius: 6px;
@@ -99,7 +155,7 @@ button:hover {
   background: #2980b9;
 }
 
-input {
+input, select {
   display: block;
   margin-bottom: 10px;
   padding: 8px;
@@ -108,78 +164,689 @@ input {
   border-radius: 5px;
 }
 
+/* ============================= */
+/* Bloque Solicitar Ensayo + Sugerencias */
+/* ============================= */
+.solicitud-container {
+  max-width: 980px;
+  margin: 10px auto 30px auto;
+  padding: 10px 20px;
+  display: flex;
+  gap: 36px;
+}
+
+.solicitud-container .card {
+  border-top: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+
+.solicitud-form {
+  flex: 1;
+  min-width: 320px;
+}
+
+.solicitud-form h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: #000;
+}
+
+.solicitud-form label {
+  font-weight: 600;
+  display: block;
+  margin: 10px 0 6px 0;
+}
+
+.solicitud-form select,
+.solicitud-form input[type="text"],
+.solicitud-form input[type="number"],
+.solicitud-form input[type="date"],
+.solicitud-form input[type="time"] {
+  width: 100%;
+  padding: 12px;
+  background: #f3f3f3;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.valor-solicitud {
+  font-weight: 700;
+  padding: 12px;
+  background: #f3f3f3;
+  border-radius: 10px;
+  margin: 6px 0 12px 0;
+}
+
+.btn-solicitar {
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+/* ============================= */
+/* Sugerencias                   */
+/* ============================= */
+.sugerencias {
+  flex: 1;
+  min-width: 320px;
+}
+
+.sugerencias h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 6px 0 12px 0;
+  color: #000;
+}
+
+.sugerencias-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.sugerencia-item {
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+}
+
+.sugerencia-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.sugerencia-item p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #111;
+}
+
+/* ============================= */
+/* Solicitar Asesoría */
+/* ============================= */
+.solicitud-asesoria {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 980px;
+  margin: 40px auto;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Bloque Izquierdo */
+.asesoria-left {
+  flex: 2;
+  background-color: rgba(179, 217, 220, 0.9); /* celeste con transparencia */
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('../img/mineria-fondo.jpg'); /* <-- tu imagen de minería */
+  background-size: cover;
+  background-position: center;
+  color: #000;
+}
+
+.asesoria-left h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.asesoria-left p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.asesoria-left label {
+  font-weight: 600;
+  margin-top: 10px;
+  display: block;
+}
+
+.asesoria-left input {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#btnBuscarAsesores {
+  background: #000;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#btnBuscarAsesores:hover {
+  background: #333;
+}
+
+/* Bloque Derecho - Ventajas */
+.asesoria-right {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.asesoria-right h3 {
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.ventaja-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.ventaja-item:last-child {
+  border-bottom: none;
+}
+
+.ventaja-item i {
+  font-size: 1.2rem;
+  color: var(--verde-oscuro);
+}
+
+.ventaja-item span {
+  flex: 1;
+}
+
+/* Sin hover para ensayos y sugerencias */
+.sugerencia-item:hover,
+.solicitud-form select:hover,
+.solicitud-form input:hover {
+  background: inherit;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================= */
+/* Chat flotante                 */
+/* ============================= */
 .chat-container {
-      position: fixed;
-      bottom: 10px;
-      right: 20px;
-      width: 300px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      font-family: 'Open Sans', sans-serif;
-      overflow: hidden;
-    }
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  width: 300px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  z-index: 999;
+}
 
-    .chat-container .chat-header {
-      background-color: #008500;
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.chat-container .chat-header {
+  background-color: var(--verde);
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .chat-container .chat-body {
-      display: none;
-      height: 200px;
-      overflow-y: auto;
-      padding: 10px;
-      background-color: #f9f9f9;
-    }
+.chat-container .chat-body {
+  display: none;
+  height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
 
-    .chat-container.open .chat-body,
-    .chat-container.open .chat-input {
-      display: block;
-    }
+.chat-container.open .chat-body,
+.chat-container.open .chat-input {
+  display: block;
+}
 
-    .chat-container .chat-input {
-      display: none;
-      border-top: 1px solid #ccc;
-      padding: 5px;
-      background: #fff;
-      display: flex;
-    }
+.chat-container .chat-input {
+  display: none;
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  background: #fff;
+  display: flex;
+}
 
-    .chat-container .chat-input input {
-      flex: 1;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+.chat-container .chat-input input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
-    .chat-container .chat-input button {
-      margin-left: 5px;
-      background: #008500;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
+.chat-container .chat-input button {
+  margin-left: 5px;
+  background: var(--verde);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
-    .chat-msg {
-      margin: 5px 0;
-      padding: 5px 10px;
-      border-radius: 15px;
-      max-width: 90%;
-    }
+.chat-msg {
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  max-width: 90%;
+}
 
-    .chat-msg.user {
-      background-color: #d1f0d1;
-      align-self: flex-end;
-    }
+.chat-msg.user {
+  background-color: #d1f0d1;
+  align-self: flex-end;
+}
 
-    .chat-msg.bot {
-      background-color: #eee;
-      align-self: flex-start;
-    }
+.chat-msg.bot {
+  background-color: #eeeeee;
+  align-self: flex-start;
+}
+/* ===== Actividad (Asesorías / Ensayos) ===== */
+.actividad {
+  max-width: 980px;
+  margin: 24px auto 48px auto;
+  padding: 0 20px;
+}
+
+.actividad h2 {
+  font-size: 1.8rem;
+  margin: 0 0 14px 0;
+  color: var(--texto-oscuro);
+}
+
+.actividad-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 18px;
+}
+
+.card-actividad {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #ececec;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  padding: 14px;
+}
+
+.card-actividad h3 {
+  margin: 4px 0 10px 4px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Más reciente */
+/* 1) El contenedor pasa a ser un bloque con posición relativa y alto mínimo.
+      Esto nos permite poner la imagen como fondo a full y el texto encima. */
+.reciente-body {
+  /* antes: display:grid ... */
+  display: block;
+  position: relative;
+  min-height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 2) La “media” ocupa todo el bloque y su <img> cubre como background. */
+.reciente-media {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  /* quitamos color de fondo para que la imagen ocupe completo */
+  background: transparent;
+}
+
+.reciente-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* fondo completo */
+  display: block;
+}
+
+/* 3) Overlay para mejorar contraste del texto sobre la imagen. */
+.reciente-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* degradado sutil desde oscuro a transparente hacia la derecha */
+  background: linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+
+/* 4) Los textos se posicionan encima de la imagen. */
+.reciente-info {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #fff;                 /* texto blanco sobre imagen */
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.reciente-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actividad-nombre {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;                 /* asegurar blanco */
+}
+
+.reciente-detalles {
+  display: flex;
+  gap: 10px;
+  font-size: .94rem;
+  color: #e7eaf0;              /* legible sobre fondo */
+}
+
+.detalle-costo {
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Botón en reciente (encima de la imagen) */
+.btn-ver {
+  align-self: start;
+  background: #000;
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+/* Chips sobre imagen */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1;
+  border: 1px solid rgba(0,0,0,.06);
+  background: #f5f7f9;
+  color: #0f172a;
+}
+
+.chip-tipo {
+  background: rgba(255,255,255,.18); /* más sutil sobre imagen */
+  color: #fff;
+  border-color: rgba(255,255,255,.35);
+}
+
+.chip-estado {
+  font-weight: 700;
+}
+
+.estado-completado {
+  color: #065f46;
+  background: #d1fae5;
+  border-color: #a7f3d0;
+}
+
+.estado-cancelado {
+  color: #7f1d1d;
+  background: #fee2e2;
+  border-color: #fecaca;
+}
+
+/* Anteriores */
+.actividad-anteriores .anteriores-lista {
+  list-style: none;
+  margin: 4px 0 10px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.anterior-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #efefef;
+  background: #fff;
+}
+
+.anterior-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.anterior-linea1,
+.anterior-linea2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.anterior-titulo {
+  font-weight: 700;
+  color: #111;
+}
+
+.anterior-costo {
+  font-weight: 800;
+  color: #111;
+}
+
+.anterior-fecha {
+  color: #6b7280;
+  font-size: .92rem;
+}
+
+.btn-link {
+  background: #f3f4f6;
+  color: #111;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 8px;
+  background: var(--verde);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* Redes Sociales */
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  background: var(--verde, #008500);
+  transform: scale(1.1);
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+  .actividad-grid {
+    grid-template-columns: 1fr;
+  }
+  .reciente-body {
+    grid-template-columns: 1fr;
+  }
+  .btn-ver { width: fit-content; }
+}
+
+@media (max-width: 480px) {
+  .anterior-item {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .btn-link {
+    justify-self: start;
+  }
+}
+
+
+/* ============================= */
+/* Accesibilidad y contraste     */
+/* ============================= */
+header a {
+  color: var(--verde-oscuro);
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* Responsive                    */
+/* ============================= */
+@media (max-width: 1024px) {
+  .solicitud-container {
+    gap: 24px;
+    max-width: 880px;
+  }
+  .sugerencias-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  .solicitud-container {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-top {
+    height: 42px;
+  }
+  header,
+  .perfil-header {
+    padding: 10px 16px;
+  }
+  .solicitud-container {
+    padding: 6px 12px;
+    max-width: 100%;
+  }
+}
+
+/* ============================= */
+/*  Actualización mínima pedida  */
+/*  (no se elimina nada previo)  */
+/* ============================= */
+
+/* Quitar el fondo azul y usar imagen; alinear contenido a la izquierda */
+.asesoria-left {
+  background: url(../img//perfil/Acesoria.png);
+  background-color: transparent;               /* anula el celeste */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: flex-start;                     /* alinear a la izquierda */
+}
+
+/* Campos más pequeños y alineados a la izquierda */
+.asesoria-left input,
+.asesoria-left select,
+.asesoria-left #btnBuscarAsesores {
+  max-width: 260px;
+  width: 100%;
+}
+
+.asesoria-left input,
+.asesoria-left select {
+  padding: 8px 10px;       /* compacto */
+  font-size: 0.95rem;
+  border-radius: 6px;
+}
+
+.asesoria-left #btnBuscarAsesores {
+  width: fit-content;      /* botón angosto */
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+/* Ajustes responsivos para mantenerlo compacto */
+@media (max-width: 480px) {
+  .asesoria-left input,
+  .asesoria-left select,
+  .asesoria-left #btnBuscarAsesores {
+    max-width: 220px;
+  }
+}

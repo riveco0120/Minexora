@@ -1,73 +1,97 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const userData = JSON.parse(localStorage.getItem('userLogged'));
-  if (!userData) return window.location.href = 'login.html';
+document.addEventListener("DOMContentLoaded", () => {
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatMessage');
+  const chatSendBtn = document.querySelector('.chat-input button');
+  const chatHeader = chatContainer?.querySelector('.chat-header');
+  const userData = JSON.parse(localStorage.getItem("userLogged"));
+  if (!userData) return (window.location.href = "login.html");
 
   // Mostrar nombre
-  document.getElementById('nombreUsuario').textContent = userData.name || userData.username;
-  document.getElementById('datoNombre').textContent = userData.name || '-';
-  document.getElementById('datoMail').textContent = userData.mail || '-';
-  document.getElementById('datoRol').textContent = userData.rol || '-';
+  document.getElementById("nombreUsuario").textContent =
+    userData.name || userData.username;
+  const datoNombre = document.getElementById("datoNombre");
+  const datoMail = document.getElementById("datoMail");
+  const datoRol = document.getElementById("datoRol");
+
+  const fecha = document.getElementById("fechaAsesoria").value;
+  const hora = document.getElementById("horaAsesoria").value;
+  if (datoNombre) datoNombre.textContent = userData.name || "-";
+  if (datoMail) datoMail.textContent = userData.mail || "-";
+  if (datoRol) datoRol.textContent = userData.rol || "-";
+
+  // Referencias para método de entrega y datos de recolección
+  const envioMuestra = document.getElementById("opcionEnvio"); //  corregido
+  const datosRecoleccion = document.getElementById("datosRecoleccion");
 
   // Logout
-  const logoutBtn = document.getElementById('logoutBtn');
-  logoutBtn.addEventListener('click', () => {
-    localStorage.removeItem('userLogged');
-    window.location.href = 'login.html';
+  const logoutBtn = document.getElementById("logoutBtn");
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("userLogged");
+    window.location.href = "login.html";
   });
 
-  // Agregar reunión
-  const formReunion = document.getElementById('formReunion');
-  const listaReuniones = document.getElementById('listaReuniones');
-  formReunion.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const titulo = document.getElementById('tituloReunion').value;
-    const fecha = document.getElementById('fechaReunion').value;
-    const hora = document.getElementById('horaReunion').value;
-    const li = document.createElement('li');
-    li.textContent = `${titulo} - ${fecha} ${hora}`;
-    listaReuniones.appendChild(li);
-    formReunion.reset();
-  });
-
-  // Funcionalidad del chat flotante
-  const chatContainer = document.getElementById("chatContainer");
-  const chatBody = document.getElementById("chatBody");
-  const chatMessage = document.getElementById("chatMessage");
-
-  window.toggleChat = function () {
-    chatContainer.classList.toggle("open");
+  // --------- Visibilidad de Recolección ---------
+  if (datosRecoleccion) {
+    // Ocultar por defecto al cargar
+    datosRecoleccion.style.display = "none";
   }
 
-  window.sendChatMessage = async function () {
-    const message = chatMessage.value.trim();
-    if (!message) return;
+  if (envioMuestra && datosRecoleccion) {
+    envioMuestra.addEventListener("change", function () {
+      if (this.value === "recoger") {
+        datosRecoleccion.style.display = "block";
+      } else {
+        datosRecoleccion.style.display = "none";
+      }
+    });
+  }
+//-- --------- Chatbot ---------
+ if (!chatBody || !chatInput || !chatSendBtn) return;
 
-    const userMsg = document.createElement("div");
-    userMsg.className = "chat-msg user";
-    userMsg.textContent = message;
-    chatBody.appendChild(userMsg);
+ // Abrir/cerrar al tocar el header
+  if (chatHeader){
+    chatHeader.addEventListener('click', () => {
+      chatContainer.classList.toggle('open');
+    });
+  }
 
-    const botMsg = document.createElement("div");
-    botMsg.className = "chat-msg bot";
-    botMsg.textContent = "Escribiendo...";
-    chatBody.appendChild(botMsg);
 
-    chatMessage.value = "";
+  const addBubble = (text, who = 'bot') => {
+    const div = document.createElement('div');
+    div.className = `chat-msg ${who}`;
+    div.textContent = text;
+    chatBody.appendChild(div);
     chatBody.scrollTop = chatBody.scrollHeight;
+    return div;
+  };
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addBubble(text, 'user');
+    chatInput.value = '';
+    const placeholder = addBubble('Escribiendo…', 'bot');
 
     try {
-      const response = await fetch('/api/chat', {
+      const resp = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ message: text })
       });
-      const data = await response.json();
-      botMsg.textContent = data.reply || "No se recibió respuesta.";
-    } catch (error) {
-      botMsg.textContent = "Error al conectar con el asistente.";
-      console.error(error);
+      const data = await resp.json();
+      placeholder.textContent = data?.reply || 'No hay respuesta.';
+    } catch (e) {
+      console.error(e);
+      placeholder.textContent = 'Error al conectar con el asistente.';
     }
-
-    chatBody.scrollTop = chatBody.scrollHeight;
   }
+
+  chatSendBtn.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
 });
