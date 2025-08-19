@@ -194,11 +194,13 @@ header .texto h3 {
     margin-bottom: 15px;
 }
 
+/* ---------- SECCIÓN SERVICIOS (carrusel continuo) ---------- */
+
 .main .servicios {
     padding-top: 460px;
     margin-bottom: 50px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .main .servicios .titulo {
@@ -208,104 +210,73 @@ header .texto h3 {
     margin-bottom: 40px;
 }
 
-.main .servicios .contenedor-menu,
-.main .servicios .contenedor-menu2 {
-    border: 1px solid #000;
-    background: transparent;
-    padding: 10px;
+.contenedor-carousel {
     overflow: hidden;
+    width: 100%;
+    background: transparent;
+    padding: 15px 0;
+    position: relative;
 }
 
-.main .servicios article {
+.carousel-track {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 40px;
+    animation: scroll-left 30s linear infinite;
+    width: max-content;
 }
 
-.productosOfrecidos {
-    flex: 1 1 300px;
-    max-width: 45%;
+.producto {
+    flex: 0 0 auto;
+    width: 320px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    max-width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.productosOfrecidos:hover {
-    transform: translateY(-5px);
+.producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-.productosOfrecidos img {
+.producto img {
     width: 100%;
-    height: auto;
-    max-width: 300px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    height: 320px; /* 🔥 más largas */
     object-fit: cover;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.productosOfrecidos .nombre {
+.producto img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.producto h4 {
     font-size: 18px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.productosOfrecidos .Descripcion {
-    font-size: 18px;
-    color: #666;
     margin-bottom: 8px;
+    color: #333;
+}
+
+.producto p {
+    font-size: 15px;
+    color: #555;
     text-align: justify;
+    line-height: 1.4em;
 }
 
-.productosOfrecidos .Precio {
-    font-size: 18px;
-    color: #008500;
-    font-weight: bold;
+/* Flujo continuo: entra por derecha y sale por izquierda */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-.todosProductos {
-    text-align: center;
-    margin: 30px auto;
-}
-
-.todosProductos a {
-    background-color: #008500;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.todosProductos a:hover {
-    background-color: #005f00;
-}
-
-.main .servicios .categorias {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.main .servicios .productosOfrecidos {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-}
-
+/* ---------- GALERIA ---------- */
 .main .galeria {
     overflow: hidden;
     margin-left: 1%;
@@ -330,6 +301,86 @@ header .texto h3 {
     transition: all .3s ease;
 }
 
+/* Eliminación progresiva según ancho */
+@media screen and (max-width: 992px) {
+    .main .galeria .foto:nth-child(n+7) { display: none; }
+}
+@media screen and (max-width: 768px) {
+    .main .galeria .foto:nth-child(n+5) { display: none; }
+}
+@media screen and (max-width: 600px) {
+    .main .galeria .foto:nth-child(n+3) { display: none; }
+}
+@media screen and (max-width: 400px) {
+    .main .galeria .foto:nth-child(n+2) { display: none; }
+}
+
+/* ---------- REDES SOCIALES (NUEVO) ---------- */
+.redes {
+    padding: 50px 0 10px;
+    background: #ffffffb8;
+    backdrop-filter: blur(2px);
+}
+
+.redes .titulo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.redes-wrap {
+    max-width: 1100px;
+}
+
+.redes-grid {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 0 0;
+}
+
+.rs {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    background: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    text-decoration: none;
+}
+
+.rs:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(0,0,0,.15);
+}
+
+.rs svg {
+    width: 24px;
+    height: 24px;
+    fill: #333;
+}
+
+/* Colores por red */
+.rs.fb:hover { background: #1877f2; }
+.rs.ig:hover { background: radial-gradient(circle at 30% 30%, #feda75, #d62976, #962fbf, #4f5bd5); }
+.rs.wa:hover { background: #25d366; }
+.rs.li:hover { background: #0a66c2; }
+.rs.yt:hover { background: #ff0000; }
+
+.rs.fb:hover svg,
+.rs.ig:hover svg,
+.rs.wa:hover svg,
+.rs.li:hover svg,
+.rs.yt:hover svg {
+    fill: #fff;
+}
+
+/* ---------- UBICACIÓN ---------- */
 .main .ubicacion {
     background: #fff;
     padding: 60px 0;
@@ -393,32 +444,14 @@ footer .copyright {
     padding: 15px 0;
 }
 
+/* ---------- RESPONSIVE ---------- */
 @media screen and (max-width:800px) {
-    header .contenedor {
-        position: static;
-        height: auto;
-    }
-
-    header .texto {
-        position: static;
-        margin: 100px 0;
-    }
-
-    header .menu {
-        text-align: center;
-    }
-
-    header .menu a {
-        margin: 5px 5px;
-    }
-
-    header .texto .nombre {
-        font-size: 30px;
-    }
-
-    header .texto h3 {
-        font-size: 18px;
-    }
+    header .contenedor { position: static; height: auto; }
+    header .texto { position: static; margin: 100px 0; }
+    header .menu { text-align: center; }
+    header .menu a { margin: 5px 5px; }
+    header .texto .nombre { font-size: 30px; }
+    header .texto h3 { font-size: 18px; }
 
     .main .acerca-de .foto {
         width: 100%;
@@ -434,21 +467,9 @@ footer .copyright {
         transform: translate(0px, 0)
     }
 
-    .main .servicios {
-        padding-top: 300px;
-    }
-
-    .main .servicios article {
-        width: 100%;
-    }
-
-    .main .servicios .productosOfrecidos img {
-        width: 50%;
-        max-width: 150px;
-        border-radius: 0;
-        margin-bottom: 0;
-        border-radius: 5px;
-    }
+    .main .servicios { padding-top: 300px; }
+    .producto { width: 240px; }
+    .producto img { height: 200px; }
 
     .main .galeria .foto {
         width: 50%;
@@ -456,38 +477,21 @@ footer .copyright {
         margin-right: 25%;
     }
 
-    .main .ubicacion {
-     padding-left: 5px;
-    padding-right: 5px;
-}
-
-    .main .mapa {
-        width: 80%;
-        margin: auto;
-    }
-
+    .main .ubicacion { padding-left: 5px; padding-right: 5px; }
+    .main .mapa { width: 80%; margin: auto; }
 }
 
 @media screen and (max-width:650px) {
-   .main .acerca-de article h3 {
-    font-size: 34px;
-    margin-bottom: 10px;
+   .main .acerca-de article h3 { font-size: 34px; margin-bottom: 10px; }
+   .producto h4, .producto p { font-size: 14px; line-height: 16px; }
+
+   .main .ubicacion .direccion{ margin-bottom: 15px; }
+   .main .ubicacion .direccion, .main .ubicacion .horarios {
+    width: 100%; text-align: center;
    }
 
-   .main .servicios article .nombre,
-   .main .servicios article .Descripcion,
-   .main .servicios article .Precio{
-    font-size: 14px;
-    line-height: 16px;
-   }
-
-   .main .ubicacion .direccion{
-    margin-bottom: 15px;
-   }
-
-   .main .ubicacion .direccion,
-    .main .ubicacion .horarios{
-    width: 100%;
-    text-align: center;
-   }
+   /* redes: compactar en móvil */
+   .redes-grid { gap: 12px; }
+   .rs { width: 44px; height: 44px; border-radius: 10px; }
+   .rs svg { width: 22px; height: 22px; }
 }

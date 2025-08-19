@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const perfilBtn = document.getElementById('btn-vistaUser');
   const avatarImg = document.getElementById('userProfileImage'); // corregido
   const nombreSpan = document.getElementById('nombreUsuario');
+  const loginBtn = document.getElementById('btn-Login'); // <-- agregado
+
+  // Ocultar/mostrar Login para cualquier rol en base a sesión
+  if (loginBtn) {
+    loginBtn.style.display = userSession ? 'none' : 'inline-block';
+  }
 
   if (userSession && isLoginPage) {
     window.location.href = '/index.html';
@@ -25,7 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (perfilBtn) {
     perfilBtn.style.display = userSession ? 'inline-block' : 'none';
     perfilBtn.addEventListener('click', () => {
-      window.location.href = '/vistaUsuari.html';
+      if (userSession?.rol === 'Administrador') {
+        window.location.href = '/vistaEmploye.html';
+      } else {
+        window.location.href = '/vistaUsuari.html';
+      }
     });
   }
 

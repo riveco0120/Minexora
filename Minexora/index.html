@@ -14,7 +14,7 @@
 		<div class="contenedor">
 			<nav class="menu">
 				<a href="#" id="btn-Acerca">Acerca de</a>
-				<a href="vistaUsuari.html" id="btn-vistaUser">Perfil</a>
+				<a href="#" id="btn-vistaUser">Perfil</a>
 				<a href="#" id="btn-Servicios">Servicios</a>
 				<a href="#" id="btn-Galeria">Galeria</a>
 				<a href="#" id="btn-Ubicacion">Ubicacion</a>	
@@ -23,8 +23,8 @@
 				<a href="#" id="logoutBtn">Cerrar sesión</a>
 				<a href="#" id="perfilLink" class="perfil-link">
 					<span id="nombreUsuario"></span>
-					<img id="userProfileImage" src="./img/user-default.png" alt="Usuario" class="profile-image" />			</nav>
- </a>
+					<img id="userProfileImage" src="./img/user-default.png" alt="Usuario" class="profile-image" />
+				</a>
 			</nav>
 			<div class="texto">
 				<h1 class="nombre">Minexora <Span>Asesorías mineras</Span></h1>
@@ -49,49 +49,37 @@
 			</div>
 		</section>
 
+		<!-- SECCIÓN SERVICIOS MODIFICADA -->
 		<section class="servicios" id="servicios">
 			<div class="contenedor">
 				<h3 class="titulo" id="productos">Nuestros Productos</h3>
 			</div>
-			<div class="contenedor-menu">
-				<div class="contenedor-menu2">
-					<p class="categorias">Productos ofrecidos</p>
-					<article>
-						<div class="productosOfrecidos">
-							<img src="img/menu/mineria-1.png" alt="">
-							<p class="nombre">Ensayo al fuego</p>
-							<p class="Descripcion">El ensayo al fuego es un método clásico y preciso utilizado para
-								determinar la cantidad de metales preciosos.</p>
-							<p class="Precio">Precio: 180000</p>
-						</div>
-						<div class="productosOfrecidos">
-							<img src="img/menu/mineria-2.png" alt="">
-							<p class="nombre">Accesorios</p>
-							<p class="Descripcion">Pregunte por nuestros productos.</p>
-							<p class="Precio">Precio: 180000</p>
-						</div>
-					</article>
-					<article>
-						<div class="productosOfrecidos">
-							<img src="img/menu/mineria-3.png" alt="">
-							<p class="nombre">Tenor de mina</p>
-							<p class="Descripcion">Preciso utilizado para determinar la cantidad de metales preciosos
-								—como oro, plata y platino— en una muestra.</p>
-							<p class="Precio">Precio: 180000</p>
-						</div>
-						<div class="productosOfrecidos">
-							<img src="img/menu/mineria-4.png" alt="">
-							<p class="nombre">Asesorías</p>
-							<p class="Descripcion">Asesorías personalizadas.</p>
-							<p class="Precio">Precio: 180000</p>
-						</div>
-					</article>
-					<div class="todosProductos">
-						<a href="memberships.html">Ver todos los productos</a>
+			<div class="contenedor-carousel">
+				<div class="carousel-track">
+					<div class="producto">
+						<img src="img/menu/mineria-1.png" alt="Ensayo al fuego">
+						<h4>Ensayo al fuego</h4>
+						<p>Método de laboratorio preciso para determinar la presencia y cantidad de metales preciosos.</p>
+					</div>
+					<div class="producto">
+						<img src="img/menu/mineria-2.png" alt="Accesorios mineros">
+						<h4>Accesorios mineros</h4>
+						<p>Equipos y herramientas confiables para apoyar procesos de exploración y extracción.</p>
+					</div>
+					<div class="producto">
+						<img src="img/menu/mineria-3.png" alt="Tenor de mina">
+						<h4>Tenor de mina</h4>
+						<p>Análisis especializado para determinar con precisión el contenido de oro, plata o platino.</p>
+					</div>
+					<div class="producto">
+						<img src="img/menu/mineria-4.png" alt="Asesorías">
+						<h4>Asesorías</h4>
+						<p>Consultoría personalizada en procesos mineros para optimizar recursos y resultados.</p>
 					</div>
 				</div>
 			</div>
 		</section>
+		<!-- FIN SECCIÓN SERVICIOS -->
 
 		<section class="galeria" id="galeriaId">
 			<div class="foto"><img src="img/galeria/galeria-1.png" alt=""></div>
@@ -103,6 +91,36 @@
 			<div class="foto"><img src="img/galeria/galeria-7.png" alt=""></div>
 			<div class="foto"><img src="img/galeria/galeria-8.png" alt=""></div>
 		</section>
+
+		<!-- SECCIÓN REDES SOCIALES (NUEVA) -->
+		<section class="redes">
+			<div class="contenedor redes-wrap">
+				<h3 class="titulo">Síguenos</h3>
+				<div class="redes-grid">
+					<a class="rs fb" href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+						<!-- Facebook SVG -->
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34v7.02C18.34 21.25 22 17.09 22 12.07z"/></svg>
+					</a>
+					<a class="rs ig" href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+						<!-- Instagram SVG -->
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 9.4A2.6 2.6 0 1 1 9.4 12 2.61 2.61 0 0 1 12 9.4z"/></svg>
+					</a>
+					<a class="rs wa" href="https://wa.me/573001112223" target="_blank" aria-label="WhatsApp">
+						<!-- WhatsApp SVG -->
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.7 18.8L2 22l3.4-1.6A10.8 10.8 0 0 0 12 23a11 11 0 0 0 8.5-19.5zM12 20.6a8.6 8.6 0 0 1-4.4-1.2l-.3-.2-2.6 1.2.6-2.7-.2-.3A8.6 8.6 0 1 1 20.6 12 8.6 8.6 0 0 1 12 20.6zm4.9-6.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a6.9 6.9 0 0 1-2-1.3 7.4 7.4 0 0 1-1.4-1.8c-.2-.3 0-.6.1-.7l.4-.5c.2-.2.2-.4.3-.6s0-.4-.1-.6-.7-1.6-1-2.1-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.7 1.1 3.1 1.2 3.3 2.2 3.3 5.3 4.6a18.1 18.1 0 0 0 1.8.7c.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3s.2-1.1.1-1.3-.2-.2-.5-.3z"/></svg>
+					</a>
+					<a class="rs li" href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+						<!-- LinkedIn SVG -->
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.6c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.69H9.33V9.56h3.41v1.49h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v5.82zM6.06 8.07a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.84 20.45H4.29V9.56h3.55v10.89z"/></svg>
+					</a>
+					<a class="rs yt" href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+						<!-- YouTube SVG -->
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.4-.43-4.9a3.1 3.1 0 0 0-2.2-2.2C18.86 4.5 12 4.5 12 4.5s-6.86 0-8.37.41a3.1 3.1 0 0 0-2.2 2.2C1 8.6 1 12 1 12s0 3.4.43 4.9a3.1 3.1 0 0 0 2.2 2.2c1.5.41 8.37.41 8.37.41s6.86 0 8.37-.41a3.1 3.1 0 0 0 2.2-2.2C23 15.4 23 12 23 12zM9.8 15.3V8.7L15.3 12l-5.5 3.3z"/></svg>
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- FIN REDES SOCIALES -->
 
 		<section class="ubicacion" id="ubicacionId">
 			<div class="contenedor">

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Usuario - Minexora</title>
+  <link rel="stylesheet" href="css/employPerfil.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header y acciones de usuario (se mantiene la lógica) -->
+  <header>
+    <img src="./img/logoeditado.png" alt="Logo Minexora" class="logo-top">
+    <div class="acciones-usuario">
+      <a href="index.html" class="inicio">Inicio</a>
+      <button id="logoutBtn">Cerrar Sesión</button>
+      <div class="usuario-perfil">
+        <span id="nombreUsuario">Usuario</span>
+        <img src="./img/FotoPerfil.jpg" alt="Foto de perfil" class="avatar" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal con 3 secciones -->
+  <main class="panel-grid">
+    <!-- 1) Sección de Actividades Pendientes -->
+    <section class="card card-pendientes">
+      <div class="card-header">
+        <h1>Actividades Pendientes</h1>
+        <button id="btnNuevaActividad" class="btn-primario">+ Nueva</button>
+      </div>
+
+      <ul class="lista-pendientes">
+        <!-- Ítem ejemplo -->
+        <li class="pendiente-item">
+          <div class="pendiente-info">
+            <h4 class="pendiente-titulo">Subir comprobante de envío de muestra</h4>
+            <p class="pendiente-descripcion">Adjunta guía de transporte para el ensayo al fuego.</p>
+            <div class="pendiente-metadata">
+              <span class="chip chip-prioridad alta">Alta</span>
+              <span class="chip chip-fecha">Vence: 20/08/2025</span>
+            </div>
+          </div>
+          <div class="pendiente-acciones">
+            <button class="btn-secundario">Adjuntar</button>
+            <button class="btn-ghost">Posponer</button>
+            <button class="btn-ok">Completar</button>
+          </div>
+        </li>
+
+        <li class="pendiente-item">
+          <div class="pendiente-info">
+            <h4 class="pendiente-titulo">Confirmar recolección de muestra</h4>
+            <p class="pendiente-descripcion">Confirma fecha y franja horaria para logística.</p>
+            <div class="pendiente-metadata">
+              <span class="chip chip-prioridad media">Media</span>
+              <span class="chip chip-fecha">Vence: 22/08/2025</span>
+            </div>
+          </div>
+          <div class="pendiente-acciones">
+            <button class="btn-secundario">Confirmar</button>
+            <button class="btn-ghost">Posponer</button>
+            <button class="btn-ok">Completar</button>
+          </div>
+        </li>
+
+        <li class="pendiente-item">
+          <div class="pendiente-info">
+            <h4 class="pendiente-titulo">Actualizar datos de contacto</h4>
+            <p class="pendiente-descripcion">Verifica teléfono y correo para notificaciones.</p>
+            <div class="pendiente-metadata">
+              <span class="chip chip-prioridad baja">Baja</span>
+              <span class="chip chip-fecha">Vence: 30/08/2025</span>
+            </div>
+          </div>
+          <div class="pendiente-acciones">
+            <button class="btn-secundario">Actualizar</button>
+            <button class="btn-ghost">Posponer</button>
+            <button class="btn-ok">Completar</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 2) Sección de Generación de Informes o Resultados -->
+<section class="card card-informes">
+  <h2>Generación de Informes / Resultados</h2>
+
+  <form class="informes-form" id="formInformes">
+    <div class="fila">
+      <div class="campo">
+        <label for="rangoDesde">Desde</label>
+        <input type="date" id="rangoDesde" required>
+      </div>
+      <div class="campo">
+        <label for="rangoHasta">Hasta</label>
+        <input type="date" id="rangoHasta" required>
+      </div>
+    </div>
+
+    <div class="fila">
+      <div class="campo">
+        <label for="tipoInforme">Tipo de informe</label>
+        <select id="tipoInforme" required>
+          <option value="">-- Seleccione --</option>
+          <option value="ensayos">Ensayos</option>
+          <option value="asesorias">Asesorías</option>
+          <option value="financiero">Financiero</option>
+          <option value="general">General</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="formatoInforme">Formato</label>
+        <select id="formatoInforme" required>
+          <option value="">-- Seleccione --</option>
+          <option value="pdf">PDF</option>
+          <option value="xlsx">Excel (.xlsx)</option>
+          <option value="csv">CSV</option>
+        </select>
+      </div>
+    </div>
+    <!-- 🔹 Campos extra que aparecen solo para "Ensayos" (sin botón Enviar) -->
+    <div id="ensayosExtra" class="ensayos-extra" hidden>
+      <div class="fila">
+        <div class="campo">
+          <label for="tenorM1">Tenor muestra 1 (g/t)</label>
+          <input type="number" id="tenorM1" step="0.0001" min="0" placeholder="Ej. 2.3500">
+        </div>
+        <div class="campo">
+          <label for="tenorM2">Tenor muestra 2 (g/t)</label>
+          <input type="number" id="tenorM2" step="0.0001" min="0" placeholder="Ej. 1.9800">
+        </div>
+      </div>
+
+      <div class="fila">
+        <div class="campo">
+          <label for="solicitanteNombre">Nombre del solicitante</label>
+          <input type="text" id="solicitanteNombre" placeholder="Nombre y apellido">
+        </div>
+        <div class="campo">
+          <label for="solicitanteCorreo">Correo del solicitante</label>
+          <input type="email" id="solicitanteCorreo" placeholder="correo@empresa.com">
+        </div>
+      </div>
+    </div>
+    <!-- /Campos extra -->
+    
+    <div class="acciones-informes">
+      <button type="button" id="btnPrevisualizar" class="btn-secundario">Previsualizar</button>
+      <button type="submit" id="btnGenerar" class="btn-primario">Generar</button>
+      <!-- 🔸 Enviar: aparece tras hacer clic en Generar (JS lo mostrará) -->
+      <button type="button" id="btnEnviarEnsayo" class="btn-ok" style="display:none;">Enviar</button>
+      <button type="button" id="btnHistorial" class="btn-ghost">Historial</button>
+    </div>
+  </form>
+
+  <div class="informes-ultimos">
+    <h3>Últimos informes</h3>
+    <ul class="informes-lista">
+      <li>
+        <span class="inf-nombre">Ensayos · Julio 2025</span>
+        <span class="inf-fecha">Generado: 01/08/2025</span>
+        <div class="inf-acciones">
+          <button class="btn-link">Ver</button>
+          <button class="btn-link">Descargar</button>
+        </div>
+      </li>
+      <li>
+        <span class="inf-nombre">Asesorías · Julio 2025</span>
+        <span class="inf-fecha">Generado: 31/07/2025</span>
+        <div class="inf-acciones">
+          <button class="btn-link">Ver</button>
+          <button class="btn-link">Descargar</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+    <!-- 3) Sección de Información de Asesorías Programadas -->
+    <section class="card card-asesorias">
+      <div class="card-header">
+        <h2>Asesorías Programadas</h2>
+        <div class="filtros-asesorias">
+          <label for="filtroEstado" class="sr-only">Estado</label>
+          <select id="filtroEstado">
+            <option value="">Todas</option>
+            <option value="confirmada">Confirmadas</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="cancelada">Canceladas</option>
+          </select>
+
+          <label for="filtroRango" class="sr-only">Rango</label>
+          <select id="filtroRango">
+            <option value="prox7">Próx. 7 días</option>
+            <option value="prox30" selected>Próx. 30 días</option>
+            <option value="todo">Todo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="agenda">
+        <!-- Tarjeta de cita -->
+        <article class="cita">
+          <div class="cita-meta">
+            <span class="cita-fecha">20 Ago 2025</span>
+            <span class="cita-hora">10:30</span>
+          </div>
+          <div class="cita-info">
+            <h4>Asesoría Geológica</h4>
+            <p>Modalidad: Virtual · Duración: 60 min · Asesor: Germana</p>
+            <div class="cita-chips">
+              <span class="chip chip-estado estado-confirmada">Confirmada</span>
+            </div>
+          </div>
+          <div class="cita-acciones">
+            <button class="btn-secundario">Unirse</button>
+            <button class="btn-ghost">Reprogramar</button>
+            <button class="btn-ghost rojo">Cancelar</button>
+          </div>
+        </article>
+
+        <article class="cita">
+          <div class="cita-meta">
+            <span class="cita-fecha">23 Ago 2025</span>
+            <span class="cita-hora">15:00</span>
+          </div>
+          <div class="cita-info">
+            <h4>Asesoría Metalúrgica</h4>
+            <p>Modalidad: Presencial · Sede: Medellín · Asesor: Leonardo</p>
+            <div class="cita-chips">
+              <span class="chip chip-estado estado-pendiente">Pendiente</span>
+            </div>
+          </div>
+          <div class="cita-acciones">
+            <button class="btn-secundario">Confirmar</button>
+            <button class="btn-ghost">Reprogramar</button>
+            <button class="btn-ghost rojo">Cancelar</button>
+          </div>
+        </article>
+
+        <article class="cita">
+          <div class="cita-meta">
+            <span class="cita-fecha">02 Sep 2025</span>
+            <span class="cita-hora">09:00</span>
+          </div>
+          <div class="cita-info">
+            <h4>Asesoría Química</h4>
+            <p>Modalidad: Virtual · Duración: 45 min · Asesor: Richard</p>
+            <div class="cita-chips">
+              <span class="chip chip-estado estado-cancelada">Cancelada</span>
+            </div>
+          </div>
+          <div class="cita-acciones">
+            <button class="btn-secundario">Reagendar</button>
+            <button class="btn-ghost">Ver detalles</button>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- 4) Resumen de Indicadores -->
+    <section class="card card-kpis">
+      <h2>Resumen de Indicadores</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <span class="kpi-label">Ensayos en curso</span>
+          <span class="kpi-value">14</span>
+          <span class="kpi-trend up">+8% vs. semana pasada</span>
+        </div>
+
+        <div class="kpi">
+          <span class="kpi-label">Tiempo prom. entrega</span>
+          <span class="kpi-value">3.2 días</span>
+          <span class="kpi-trend down">-0.4 d</span>
+        </div>
+
+        <div class="kpi">
+          <span class="kpi-label">Satisfacción (NPS)</span>
+          <span class="kpi-value">72</span>
+          <span class="kpi-trend up">+3 pts</span>
+        </div>
+
+        <div class="kpi">
+          <span class="kpi-label">Asesorías esta semana</span>
+          <span class="kpi-value">9</span>
+          <span class="kpi-trend flat">=</span>
+        </div>
+      </div>
+
+      <div class="kpi-progress">
+        <div class="row">
+          <span>Cumplimiento de SLA</span>
+          <div class="bar"><i style="width: 86%"></i></div>
+          <span class="pct">86%</span>
+        </div>
+        <div class="row">
+          <span>Informes entregados</span>
+          <div class="bar"><i style="width: 64%"></i></div>
+          <span class="pct">64%</span>
+        </div>
+        <div class="row">
+          <span>Muestras validadas</span>
+          <div class="bar"><i style="width: 91%"></i></div>
+          <span class="pct">91%</span>
+        </div>
+      </div>
+
+      <div class="kpi-notas">
+        <p><strong>Nota:</strong> Los indicadores se calculan con datos de los últimos 30 días y se actualizan al cierre
+          del día.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="contenedor">
+      <div class="copyright">
+        <p>Copyright Minexora @ 2025</p>
+      </div>
+    </div>
+  </footer>
+  <!-- Script principal -->
+  <script src="js/empoyeUtil.js"></script>
+</body>
+
+</html>
