@@ -1059,8 +1059,13 @@ header a:hover {
 
 .informes-form .fila {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px; /* ↑ separación como tipo/fecha */
+  grid-template-columns: 1fr 1fr;   /* dos columnas iguales */
+  gap: 24px;                        /* más separación horizontal */
+  align-items: start;                /* alinea arriba */
+}
+
+.informes-form .campo {
+  min-width: 250px;                  /* evita inputs demasiado angostos */
 }
 
 .informes-form .campo label {
@@ -1146,8 +1151,13 @@ header a:hover {
 
 .ensayos-extra .fila {
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr)); /* ↑ columnas con ancho mínimo */
-  gap: 16px; /* ↑ separación entre izquierda y derecha */
+  grid-template-columns: 1fr 1fr;   /* dos columnas iguales */
+  gap: 24px;                        /* más separación horizontal */
+  align-items: start;                /* alinea arriba */
+}
+
+.ensayos-extra .campo {
+  min-width: 250px;                  /* evita inputs demasiado angostos */
 }
 
 .ensayos-extra .campo label {
@@ -1175,12 +1185,14 @@ header a:hover {
 @media (max-width: 700px) {
   .ensayos-extra .fila {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
 @media (max-width: 700px) {
   .informes-form .fila {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
   .informes-lista li {
     grid-template-columns: 1fr;
@@ -1190,6 +1202,7 @@ header a:hover {
     justify-content: flex-start;
   }
 }
+
 
 /* ------------------------------------ */
 /* 3) Asesorías Programadas             */

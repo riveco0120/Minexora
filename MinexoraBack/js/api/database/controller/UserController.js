@@ -3,7 +3,7 @@ const { UserMapper } = require("../mapper/userMapper");
 const {
   UserRepository,
   ContactTokenRepository,
-} = require("../repository/UserRepository");
+} = require("../repository/userRepository");
 const nodemailer = require("nodemailer");
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
